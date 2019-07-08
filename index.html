@@ -5,176 +5,271 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="bodyFat.css">
-
-  <script src="jquery-3.4.1.min.js"></script>
-
-
-  <title>bodyFat calculator</title>
-
-  <div class="navBar">
-    <h2>體脂計算器</h2>
-    <a href="https://www.facebook.com/profile.php?id=100003999642145" target="_blank"><img src="img/fb.png" alt=""></a>
-  </div>
-
-  <script type="text/javascript">
-
-    $(function() {
-        $("#calc").click(function() {
-          var h = $("#height").val(),
-              w = $("#weight").val(),
-              a = $("#age").val(),
-              s = $("#sex").val();
-
-          if (h == '') {
-            alert("請輸入身高 ~");
-          } else if (w == "") {
-            alert("請輸入體重 ~");
-          } else if (a == "") {
-            alert("請輸入年齡 ~");
-          } else {
-            // 計算並回傳 BMI 數值，只取到小數點第 2 位
-            var bmi = w / (h * h);
-            $("#BmiValue").val(formatFloat(bmi, 2));
-            BmiStandard(bmi);
-
-
-            var bmiRate = (1.2 * bmi) + (0.23 * a - 5.4) - (10.8 * s);
-            $("#bodyRateValue").val(formatFloat(bmiRate, 2));
-            bodyRateStandard(s, bmiRate);
-          }
-        });
-        $("#empty").click(function() {
-          $("#height").val('');
-          $("#weight").val('');
-          $("#age").val('');
-          $("#BmiValue").val('');
-          $("#bodyRateValue").val('');
-          $("#BmiStandard").val('');
-          $("#bodyRateStandard").val('');
-        });
-      });
-
-
-      function BmiStandard(n) {
-        if (n < 18.5) {
-          $('#BmiStandard').val('太輕囉');
-          // alert("宜盈趕快去吃飯")
-        } else if (n > 24) {
-          $('#BmiStandard').val('太重囉');
-        } else {
-          $('#BmiStandard').val('超標準');
-        }
-      }
-
-      function bodyRateStandard(g, f) {
-        if (g == 1 && f <= 25) {
-          $('#bodyRateStandard').val('標準');
-        } else if (g == 1 && f > 25) {
-          $('#bodyRateStandard').val('肥胖');
-        } else if (g == 0 && f <= 30) {
-          $('#bodyRateStandard').val('標準');
-        } else if (g == 0 && f > 30) {
-          $('#bodyRateStandard').val('肥胖');
-        }
-      }
-
-      function formatFloat(num, pos) {
-        var size = Math.pow(10, pos);
-        return Math.round(num * size) / size;
-      }
-  </script>
-
+  <link rel="stylesheet" href="Resume.css">
+  <title>Document</title>
 </head>
 
 <body>
-  <div class="title">
-    <h2>體脂率</h2>
-    <hr>
-  </div>
-  <div class="containerContent">
-    <div class="left">
-      <div class="introduction">
-        <h2>Introduction</h2>
-        <p>體脂肪率，又稱體脂百分比、體脂率，是將脂肪含量用其占總體重的百分比的形式表示，一般用於動物，但近年開始有在人體的應用。對於動物來說，體脂百分比的計算法是把動物體重中的脂肪部分重量與整個身體的分量相除，再乘以100%。
-        </p>
-        <p>對於男性，必需脂肪一般佔體重的2～5%，而女性約為10～13%。儲存脂肪由脂肪組織內所累積的脂肪組成，當中部份位於胸腔及腹部，用以保護身體的內臟。一般來說，最小的建議總體脂百分比都會比身體的必需脂肪比例高。直接測量體脂百分比具有一定的難度，所以現時網上一般的方法，都是透過對人的性別及體重資料作出評估。
-        </p>
-      </div>
-      <div class="reduceBodyFat">
-        <h2>Reduce Bodyfat</h2>
-        <p>降低體脂肪比率方法：</p>
-        <ul>
-          <li>透過有氧運動減少脂肪。</li>
-          <li>透過重量訓練增加肌肉量，充足的肌肉所燃燒的脂肪比長時間有氧運動更強大。</li>
-          <li>減少攝入熱量，自然消耗體脂肪方法，一般是節食，節食方法需要堅持較長時間，對身體和意志力都是考驗。</li>
-        </ul>
-      </div>
-    </div>
-    <div class="right">
-      <div class="Standard">
-        <h2>Standard</h2>
-        <p>雖然要直接測量體脂百分比具有一定的難度，但也不是完全沒有辦法的。其中最為精確但較為昂貴的方法是測量患者在水下的體重，即靜水體重。其他較為簡單但精確度稍差的方法是，測量皮褶厚度，也即測定特定部位皮下脂肪的厚度。另一個方法是測量生物電阻，但該方法由於多數家用儀器僅僅測量雙腳間的生物電阻且精度不同，所以並不被一些機構推薦為替代 BMI 的方法。
-        </p>
-      </div>
-      <div class="formula">
-        <h2>Formula</h2>
-        <h3>體脂 (%) = ( 1.2 x BMI ) + ( 0.23 x 年齡 - 5.4 ) - ( 10.8 x 性別 )</h3>
-      </div>
-    </div>
-  </div>
-  <div class="containerInformation">
-    <div class="containerInput">
-      <div class="height">
-        <span>身高 (m):</span>
-        <input type="number" id="height" name="" value="" placeholder="請輸入身高(單位為公尺唷)">
-      </div>
-      <div class="weight">
-        <span>體重 (kg):</span>
-        <input type="number" id="weight" name="" value="" placeholder="請輸入體重">
-      </div>
-      <div class="age">
-        <span>年齡 (year):</span>
-        <input type="number" id="age" name="" value="" placeholder="請輸入年齡">
-      </div>
-      <div class="sex">
-        <span>性別: </span>
-        <select id="sex">
-          <option value="1">男生 (Male)</option>
-          <option value="0">女生 (Female)</option>
-        </select>
-      </div>
-    </div>
 
-    <div class="containerText">
-      <div class="BmiValue">
-        <span>BMI數值: </span>
-        <input type="text" id="BmiValue" name="" readonly="true">
-      </div>
-      <div class="bodyRateValue">
-        <span>體指率數值: </span>
-        <input type="text" id="bodyRateValue" name="" readonly="true">
-      </div>
-      <div class="BmiStandard">
-        <span>BMI標準: </span>
-        <input type="text" id="BmiStandard" name="" readonly="true">
-      </div>
-      <div class="bodyRateStandard">
-        <span>體指率標準: </span>
-        <input type="text" id="bodyRateStandard" name="" readonly="true">
-      </div>
+  <div class="container">
+    <div class="top">
+      <h2>Nash Chen</h2>
+      <h5>Web Designer</h5>
     </div>
+    <div class="content">
+      <div class="left">
+        <div class="picture">
+          <img src="pic\head.png" alt="">
+        </div>
+        <div class="personal">
+          <h3>Personal</h3>
+          <hr>
+          <div class="name">
+            <span>Name</span>
+            <span class="part-1">Nash</span>
+          </div>
+          <hr>
+          <div class="Birthday">
+            <span>Birthday</span>
+            <span class="part-2">1995/05/27</span>
+          </div>
+          <hr>
+          <div class="National">
+            <span>National</span>
+            <span class="part-2">Taiwan</span>
+          </div>
+          <hr>
+          <div class="Language">
+            <span>Language</span>
+            <span class="part-3">Chinese,English</span>
+          </div>
+          <hr>
+        </div>
+        <div class="contact">
+          <h3>Contact</h3>
+          <hr>
+          <div class="Mobile">
+            <img src="pic\mobile.png" alt="">
 
-    <div class="containerButton">
-      <div class="calculator">
-        <button type="button" id="calc"><span>計算 </span></button>
+            <span>Mobile</span>
+            <span class="part-1">0925-***-***</span>
+
+          </div>
+          <hr>
+          <div class="Email">
+            <img src="pic\mail.png" alt="">
+            <span>Email</span>
+            <span class="part-2">like****@*****.com.tw</span>
+          </div>
+          <hr>
+          <div class="Address">
+            <img src="pic\home.png" alt="">
+            <span>Address</span>
+            <span class="part-3">Taipei City Taiwan</span>
+          </div>
+          <hr>
+        </div>
+        <div class="links">
+          <h3>Links</h3>
+          <hr>
+          <div class="fb">
+            <img src="pic\facebook.png" alt="">
+            <span>www.facebook.com/nash</span>
+          </div>
+          <div class="Line">
+            <img src="pic\line.png" alt="">
+            <span>De******</span>
+          </div>
+          <div class="ig">
+            <img src="pic\instagram.png" alt="">
+            <span>Shai**</span>
+
+          </div>
+        </div>
       </div>
-      <div class="blank">
-        <button type="button" id="empty"><span>清空 </span></button>
+      <div class="right">
+        <div class="introduce">
+          <h3>Introduce</h3>
+          <hr>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur fugit, quisquam veniam nostrum, culpa alias voluptas deleniti voluptatem facilis, suscipit cumque. Iusto illo nostrum nemo vitae eum expedita, dolores omnis!
+          </p>
+        </div>
+        <div class="particularContainer">
+
+          <div class="particular pie">
+            <div class="circle circle0"></div>
+            <div class="circle circle1"></div>
+            <span>Creactivity</span>
+          </div>
+
+          <div class="ambition pie">
+            <div class="circle circle2"></div>
+            <div class="circle circle3"></div>
+            <span>Ambition</span>
+          </div>
+          <div class="innovative pie">
+            <div class="circle circle4"></div>
+            <div class="circle circle5"></div>
+            <span>Innovative</span>
+          </div>
+          <div class="teamwork pie">
+            <div class="circle circle6"></div>
+            <div class="circle circle7"></div>
+            <span>Team Work</span>
+          </div>
+        </div>
+        <div class="workExp">
+          <h3>Work Experience</h3>
+          <hr>
+          <div class="workExpContainer">
+
+            <div class="lableContainer">
+              <div class="lable">
+                <div class="year">
+                  <span>2019</span>
+                </div>
+                <div class="triangle"></div>
+              </div>
+
+              <div class="lable lable-1">
+                <div class="year year-1">
+                  <span>2018</span>
+                </div>
+                <div class="triangle triangle"></div>
+              </div>
+
+              <div class="lable lable-1">
+                <div class="year year-2">
+                  <span>2017</span>
+                </div>
+                <div class="triangle triangle"></div>
+              </div>
+            </div>
+            <div class="line">
+              <div class="lineShape"></div>
+              <div class="point1"></div>
+              <div class="point2"></div>
+              <div class="point3"></div>
+            </div>
+
+            <div class="job">
+              <div class="job-one">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim similique voluptate minima magni quas culpa minus eligendi dicta, laborum quis.</p>
+              </div>
+              <div class="job-two">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim similique voluptate minima magni quas culpa minus eligendi dicta, laborum quis.</p>
+              </div>
+              <div class="job-three">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim similique voluptate minima magni quas culpa minus eligendi dicta, laborum quis.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="softWare">
+          <h3>Software</h3>
+          <hr>
+          <div class="softWareDivision">
+            <div class="progressContainer">
+              <div class="AE">
+                <h4>After Effect</h4>
+                <div class="progress">
+                  <div class="barGraph25"></div>
+                  <div class="barGraph50"></div>
+                  <div class="barGraph75"></div>
+                  <div class="barGraph100"></div>
+                </div>
+              </div>
+              <div class="PDR">
+                <h4>Power Director</h4>
+                <div class="progress">
+                  <div class="barGraph25"></div>
+                  <div class="barGraph50"></div>
+                  <div class="barGraph75"></div>
+                  <div class="barGraph100"></div>
+                </div>
+              </div>
+              <div class="HTML">
+                <h4>HTML 5</h4>
+                <div class="progress">
+                  <div class="barGraph25"></div>
+                  <div class="barGraph50"></div>
+                  <div class="barGraph75"></div>
+                  <div class="barGraph100"></div>
+                </div>
+              </div>
+              <div class="CSS3">
+                <h4>CSS 3</h4>
+                <div class="progress">
+                  <div class="barGraph25"></div>
+                  <div class="barGraph50"></div>
+                  <div class="barGraph75"></div>
+                  <div class="barGraph100"></div>
+                </div>
+              </div>
+            </div>
+            <div class="lineBarContaiber">
+              <div class="lineBar">
+                <div class="lineBarBox">
+                  <div class="lineBar-one"></div>
+                  <div class="lineBar-two"></div>
+                  <div class="lineBar-three"></div>
+                  <div class="lineBar-four"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="totalBar">
+            <div class="loading"></div>
+          </div>
+          <div class="progressNumber">
+            <span>(80/100)</span>
+          </div>
+        </div>
+        <div class="hobby">
+          <h3>Hobbies</h3>
+          <hr>
+          <div class="hobbyContainer">
+            <div class="music">
+              <img src="pic\music.png" alt="">
+              <br>
+              <span>Music</span>
+
+            </div>
+            <div class="movie">
+              <img src="pic\movie.png" alt="">
+              <br>
+              <span>Moive</span>
+
+            </div>
+            <div class="game">
+              <img src="pic\game.png" alt="">
+              <br>
+              <span>Game</span>
+
+            </div>
+            <div class="program">
+              <img src="pic\program.png" alt="">
+              <br>
+              <span>program</span>
+
+            </div>
+            <div class="workout">
+              <img src="pic\workout.png" alt="">
+              <br>
+              <span>Workout</span>
+
+            </div>
+            <div class="computer">
+              <img src="pic\computer.png" alt="">
+              <br>
+              <span>Computer</span>
+
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
 </body>
 
 </html>
