@@ -440,7 +440,7 @@
   width: 90%;
   height: 20px;
   background-color: #FFFFFF;
-  margin-top: 20px;
+  margin: 20px auto;
   border: solid 1px;
 }
 
@@ -451,10 +451,13 @@
   margin: 4px 0 5px 5px;
 }
 
-.progressNumber {
-  margin-left: 615px;
-  margin-top: 10px;
+.totalBarContainer span{
+  position: relative;
+  top:5px;
+  left:90%;
+
 }
+
 
 .hobbyContainer {
   display: flex;
