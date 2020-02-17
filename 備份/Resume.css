@@ -6,12 +6,10 @@
   position: relative;
 }
 
-
 .container {
   border: solid 5px;
-  margin:  auto;
-  min-width: 1050px;
-  max-width:  1050px;
+  margin: 10px auto;
+  width: 1500px;
 }
 
 .top {
@@ -19,7 +17,7 @@
   text-align: center;
   padding: 80px 0;
   background-color:#213C55;
-  width: 100%
+  width: 1490px;
 }
 .top h2,h5{
   color: #46E6F8;
@@ -32,17 +30,14 @@
 
 .left {
   padding-left: 15px;
-  padding-right: 15px;
+  padding-right: 20px;
   background-color: #2F2F2F;
-  min-width: 310px;
-  max-width: 310px;
-
+  width: 500px;
 
 }
 
 .left .picture img {
-  border-radius: 50%;
-  width: 50%;
+  border-radius: 100%;
   margin: 10px 80px;
 
 
@@ -131,9 +126,10 @@
 }
 
 .right {
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 30px;
   background-color: #F8F8F8;
-
+  width: 1000px;
 }
 
 .particularContainer {
@@ -393,7 +389,7 @@
 .lineBarBox {
   width: 190px;
   height: 160px;
-  margin-left: 150px;
+  margin-left: 200px;
   border: solid 3px;
   border-right: none;
   border-top: none;
